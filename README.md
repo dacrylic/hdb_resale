@@ -4,10 +4,9 @@ This repository contains code for analyzing and predicting HDB resale prices in 
 
 ## Files
 
-- `hdb_resale_model_prediction.ipynb` – Uses precomputed GraphSAGE embeddings with downstream models (XGBoost, MLP) to predict resale price per sqm.  
-  - **GPU is not required** for this notebook.
-
-- `hdb_resale_link_analysis.ipynb` – Builds the HDB resale graph and trains GraphSAGE embeddings.  
+- `hdb_resale_model_prediction.ipynb` – Preprocesses the training data and trains an XGBoost model to predict resale price per square meter.
+  - **GPU:** Not required (CPU is sufficient).
+- `hdb_resale_link_analysis.ipynb` – Builds the HDB resale graph and trains GraphSAGE embeddings for GNN-based price prediction.  
   - **Training** requires a GPU.  
   - **Inference** can run on CPU.
 
@@ -16,19 +15,31 @@ This repository contains code for analyzing and predicting HDB resale prices in 
 ## Installation
 
 1. Clone the repository and navigate into the folder.  
-
+```bash
+git clone <your-repo-url>
+cd <repository-folder>
+```
 2. (Optional) Create and activate a virtual environment for the project.  
-
+```bash
+python -m venv venv
+# For Linux/macOS
+source venv/bin/activate
+# ForWindows
+venv\Scripts\activate
+```
 3. Install required packages using the `requirements.txt` file.  
-
-> This will install all Python dependencies needed to run both notebooks.
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+This will install all Python dependencies needed to run both notebooks.
 
 ---
 
 ## How to Use
 
 ### 1. Model Prediction Notebook (`hdb_resale_model_prediction.ipynb`)
-- **Purpose:** Load precomputed GraphSAGE embeddings and run downstream models (XGBoost, MLP) for predictions.  
+- **Purpose:** Performs exploratory data analysis (EDA) on the resale flat price dataset, prepares the final training dataset, and trains an XGBoost model for HDB resale price prediction.
 - **GPU Usage:** Not required; CPU inference is sufficient.
 - **You WILL need to run this notebook to create the data csv required before running the link analysis notebook**
 

@@ -1,7 +1,6 @@
 # HDB Resale Price Prediction – Graph & Model Analysis
 
-This repository contains code for analyzing and predicting HDB resale prices in Singapore using a **graph-based approach (GraphSAGE)** and downstream models.
-
+This repository contains code for analyzing and predicting HDB resale prices in Singapore using XGBoost for resale price per sqm prediction and a graph-based approach (GraphSAGE) for GNN-based price prediction.
 ## Files
 
 - `hdb_resale_model_prediction.ipynb` – Preprocesses the training data and trains an XGBoost model to predict resale price per square meter.

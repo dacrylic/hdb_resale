@@ -20,11 +20,11 @@ cd <repository-folder>
 ```
 2. (Optional) Create and activate a virtual environment for the project.  
 ```bash
-python -m venv venv
+python -m venv .venv
 # For Linux/macOS
-source venv/bin/activate
-# ForWindows
-venv\Scripts\activate
+source .venv/bin/activate
+# For Windows
+.venv\Scripts\activate
 ```
 3. Install required packages using the `requirements.txt` file.  
 ```bash

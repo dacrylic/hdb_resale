@@ -1,0 +1,11 @@
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Local virtual environment
+.venv/
+
+# Optional: common Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

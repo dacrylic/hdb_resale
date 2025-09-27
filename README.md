@@ -13,12 +13,12 @@ This repository contains code for analyzing and predicting HDB resale prices in 
 
 ## Installation
 
-1. Clone the repository and navigate into the folder.  
+### 1. Clone the repository and navigate into the folder.  
 ```bash
-git clone <your-repo-url>
-cd <repository-folder>
+git clone https://github.com/dacrylic/hdb_resale.git
+cd hdb_resale
 ```
-2. (Optional) Create and activate a virtual environment for the project.  
+### 2. (Optional) Create and activate a virtual environment for the project.  
 ```bash
 python -m venv .venv
 # For Linux/macOS
@@ -26,12 +26,61 @@ source .venv/bin/activate
 # For Windows
 .venv\Scripts\activate
 ```
-3. Install required packages using the `requirements.txt` file.  
+### 3. Install required packages using the `requirements.txt` file.  
+
+### 3.1 Upgrade pip
+
+Run:
 ```bash
 pip install --upgrade pip
+```
+### 3.2 Install dependencies
+
+Run:
+```bash
 pip install -r requirements.txt
 ```
-This will install all Python dependencies needed to run both notebooks.
+---
+
+### Important Notes
+
+#### Handling CUDA packages and the +cu118 suffix
+
+- The CUDA-enabled PyTorch wheels (e.g., `torch==2.7.1+cu118`) require specifying PyTorch’s special CUDA wheel index.
+- To ensure package resolvers like `uv` or pip find these packages correctly, **your `requirements.txt` should start with:**
+```bash
+  --extra-index-url https://download.pytorch.org/whl/cu118
+```
+- This tells pip/uv where to find the CUDA builds. This has already been done in our requirements.txt.
+
+---
+
+#### If you are using `uv` (or other resolvers) and encounter version resolution issues:
+
+Try installing CUDA-enabled PyTorch packages separately before running `uv` on the rest:
+```bash
+pip install torch==2.7.1+cu118 torchaudio==2.7.1+cu118 torchvision==0.22.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+
+uv pip install -r requirements.txt --no-deps
+```
+Or ensure the `--extra-index-url` line is present at the top of `requirements.txt`.
+
+---
+
+### macOS Users
+
+- CUDA-enabled PyTorch packages are **not compatible** with macOS because CUDA is not supported on Mac.
+
+- After installing dependencies as above, run the following commands to replace CUDA builds with CPU-only versions:
+```bash
+pip uninstall torch torchaudio torchvision
+
+pip install torch==2.7.1 torchaudio torchvision
+```
+- **Note:**  
+  `torch_geometric` does not provide pre-built CPU-only wheels for macOS. macOS users may need to build it from source or use CPU-only features without GPU acceleration.
+
+---
 
 ---
 

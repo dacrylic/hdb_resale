@@ -94,7 +94,7 @@ pip install torch==2.7.1 torchaudio torchvision
 
 ### 2. Link Analysis Notebook (`hdb_resale_link_analysis.ipynb`)
 - **Purpose:** Build the graph, train GraphSAGE embeddings, and evaluate models.  
-- **GPU Usage:** Required for training embeddings.  
+- **GPU Usage:** Required for training embeddings. Skip the model training cell (commented inside) if no GPU
 - **Inference:** Can be run on CPU using the Mapper + MLP pipeline.  
 
 ---
